@@ -1,25 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {Navbar} from './src/components/Navbar'
+import {AddTodo} from "./src/components/AddTodo";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Navbar title="Навигационная панель"/>
+      <View style={styles.container}>
+          <AddTodo/>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
+      padding: 10
   },
-  text: {
-    color: '#fff',
-    fontSize: 26
-  }
 });
