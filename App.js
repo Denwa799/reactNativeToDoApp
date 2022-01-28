@@ -16,6 +16,10 @@ export default function App() {
             }])
     }
 
+    const removeTodo = id => {
+        setTodos(prev => prev.filter(todo => todo.id !== id))
+    }
+
     return (
         <View>
             <Navbar title="Навигационная панель"/>
@@ -26,7 +30,7 @@ export default function App() {
                     keyExtractor={item => item.id.toString()}
                     data={todos}
                     renderItem={({item}) => (
-                        <Todo todo={item}/>
+                        <Todo todo={item} onRemove={removeTodo}/>
                     )}
                 />
             </View>
@@ -36,6 +40,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        paddingBottom: 250
     },
 });
