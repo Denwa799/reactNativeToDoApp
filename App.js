@@ -89,7 +89,7 @@ export default function App() {
 
     return (
         <View>
-            <Navbar title="Навигационная панель"/>
+            <Navbar title="React Native App"/>
             <View style={styles.container}>
                 {content}
             </View>
