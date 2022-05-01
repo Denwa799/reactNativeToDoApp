@@ -1,3 +1,9 @@
+const handlers = {
+    CHANGE_SCREEN: (state, payload) => payload,
+    DEFAULT: state => state
+}
+
 export const ScreenReducer = (state, action) => {
-    return state
+    const handler = handlers[action.type] || handlers.DEFAULT
+    return handler(state, action.payload)
 }
