@@ -58,13 +58,19 @@ export const TodoState = ({children}) => {
 
     const fetchTodos = async () => {
         showLoader()
-        const response = await fetch('https://react-native-todo-677d4-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
-            headers: {'Content-Type': 'application/json'}
-        })
-        const data = await response.json()
-        const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
-        dispatch({type: FETCH_TODOS, todos})
-        hideLoader()
+        clearError()
+        try {
+            const response = await fetch('https://react-native-todo-677d4-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
+                headers: {'Content-Type': 'application/json'}
+            })
+            const data = await response.json()
+            const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
+            dispatch({type: FETCH_TODOS, todos})
+        } catch (e) {
+            showError('Что то пошло не так...')
+        } finally {
+            hideLoader()
+        }
     }
 
     const updateTodo = (id, title) => dispatch({type: UPDATE_TODO, id, title})
