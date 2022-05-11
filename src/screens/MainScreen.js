@@ -16,7 +16,7 @@ const MainScreen = () => {
         Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
     )
 
-    const loadTodos = useCallback(async () => await fetchTodos(),[fetchTodos])
+    const loadTodos = useCallback(async () => await fetchTodos(), [fetchTodos])
 
     useEffect(() => {
         loadTodos()
@@ -42,7 +42,7 @@ const MainScreen = () => {
         return <View style={styles.center}>
             <AppText style={styles.error}>{error}</AppText>
             <AppButton onPress={loadTodos}>Повторить</AppButton>
-            </View>
+        </View>
     }
 
     let content = (
